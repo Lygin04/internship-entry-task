@@ -1,0 +1,7 @@
+﻿services:
+  internship-entry-task.api:
+    image: internship-entry-task.api
+    build:
+      context: .
+      dockerfile: internship-entry-task.Api/Dockerfile
+
