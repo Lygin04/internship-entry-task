@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\internship-entry-task.Domain\internship-entry-task.Domain.csproj" />
+      <ProjectReference Include="..\internship-entry-task.Infrastructure\internship-entry-task.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

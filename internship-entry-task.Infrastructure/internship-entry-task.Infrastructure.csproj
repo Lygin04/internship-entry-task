@@ -7,4 +7,48 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.1.66" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.7" />
+      <PackageReference Include="Npgsql" Version="9.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Repositories\Scripts\Game\Game.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Game.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+        <None Remove="Migrations\0001_CreateGameTable.sql"/>
+        <EmbeddedResource Include="Migrations\0001_CreateGameTable.sql"/>
+        <EmbeddedResource Update="Repositories\Scripts\Game\Game.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Communications.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Update="Repositories\Scripts\Move\Move.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>Move.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <None Remove="Migrations\0002_CreateMoveTable.sql"/>
+        <EmbeddedResource Include="Migrations\0002_CreateMoveTable.sql"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Repositories\Scripts\Game\Game.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Game.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Repositories\Scripts\Move\Move.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Move.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\internship-entry-task.Domain\internship-entry-task.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
