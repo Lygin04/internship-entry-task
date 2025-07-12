@@ -7,4 +7,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\internship-entry-task.Models\internship-entry-task.Models.csproj" />
+    </ItemGroup>
+
 </Project>
