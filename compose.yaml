@@ -8,8 +8,8 @@
       BOARD_SIZE: 5
       WIN_CONDITION: 4
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: "http://0.0.0.0:9090"
-      HTTP_PORTS: "9090"
+      ASPNETCORE_URLS: "http://0.0.0.0:8080"
+      HTTP_PORTS: "8080"
     depends_on:
       database:
         condition: service_healthy
@@ -17,7 +17,7 @@
       - backend
     restart: always
     ports:
-      - "9090:9090"
+      - "8080:8080"
     deploy:
       replicas: 1
       
