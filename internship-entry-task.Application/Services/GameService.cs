@@ -18,6 +18,7 @@ public class GameService : IGameService
     private readonly int _boardSize;
     private readonly int _winCondition;
     private readonly string  _board;
+    private readonly Random _rnd;
     
     public GameService(
         IGameRepository gameRepository,
@@ -29,6 +30,7 @@ public class GameService : IGameService
         _gameRepository = gameRepository;
         _moveRepository = moveRepository;
         _dapperContext = dapperContext;
+        _rnd = new Random();
         
         var board = new char[_boardSize, _boardSize]
         ;
@@ -53,8 +55,7 @@ public class GameService : IGameService
             Status = GameStatus.InProgress
         };
         
-        var rnd =  new Random();
-        game.TurnPlayer = rnd.Next(0, 2) == 1 ? 'X' : 'O';
+        game.TurnPlayer = _rnd.Next(0, 2) == 1 ? 'X' : 'O';
 
         var gameResponse = new GameCreateResponse
         {
@@ -102,11 +103,20 @@ public class GameService : IGameService
             }
 
             game.MoveCount++;
+            
             var board = DeserializeBoard(game.Board);
 
             if (board[moveRequest.Col, moveRequest.Row] is 'X' or 'O')
             {
                 throw GameBadRequestException.CellAlreadyOccupied(moveRequest.Row, moveRequest.Col);
+            }
+            
+            if (game.MoveCount % 3 == 0)
+            {
+                if (_rnd.NextDouble() <= 0.1)
+                {
+                    game.TurnPlayer = game.TurnPlayer == 'O' ? 'X' : 'O';
+                }
             }
             
             board[moveRequest.Col, moveRequest.Row] = game.TurnPlayer;
