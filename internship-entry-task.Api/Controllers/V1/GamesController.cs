@@ -27,7 +27,7 @@ public class GamesController(IGameService gameService) : ApiControllerV1
     {
         var game = await gameService.MakeMove(id, moveRequest);
         
-        var eTag = $"\"game-{game.Id}-version-{game.MoveCount}\""; // кавычки обязательны
+        var eTag = $"\"game-{game.Id}-version-{game.MoveCount}\"";
         Response.Headers[HeaderNames.ETag] = eTag;
         
         return Ok(game);
