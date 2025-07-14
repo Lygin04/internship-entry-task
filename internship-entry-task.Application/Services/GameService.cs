@@ -111,7 +111,7 @@ public class GameService : IGameService
             
             board[moveRequest.Col, moveRequest.Row] = game.TurnPlayer;
 
-            if (game.MoveCount >= 7 && CheckWin(board, moveRequest.Row, moveRequest.Col, game.TurnPlayer))
+            if (game.MoveCount >= _winCondition * 2 - 1 && CheckWin(board, moveRequest.Row, moveRequest.Col, game.TurnPlayer))
             {
                 game.Status = game.TurnPlayer == 'X' ? GameStatus.XWins : GameStatus.OWins;
             }

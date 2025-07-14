@@ -3,7 +3,7 @@
 namespace internship_entry_task.Domain.Exceptions.Game;
 
 /// <summary>
-/// Исключение, указывающее на то, что файл не был найден.
+/// Исключение, указывающее на то, что игра не была найден.
 /// </summary>
 public class GameNotFoundException(string message) : NotFoundException(message)
 {
